@@ -43,7 +43,7 @@ public class Game {
 
 	public void move(Coordinate origin, Coordinate target) {
 		assert this.isCorrect(origin, target) == null;
-		if (origin.diagonalDistance(target) == 2) {
+		if (this.board.getPiece(origin) instanceof Pawn && origin.diagonalDistance(target) == 2) {
 			this.board.remove(origin.betweenDiagonal(target));
 		}
 		this.board.move(origin, target);

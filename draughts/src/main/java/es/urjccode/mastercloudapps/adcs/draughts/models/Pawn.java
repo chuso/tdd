@@ -19,6 +19,11 @@ class Pawn extends Piece {
         int distance = origin.diagonalDistance(target);
 		if (distance > Pawn.MAX_DISTANCE) {
 			return Error.BAD_DISTANCE;
+        }
+		if (distance == Pawn.MAX_DISTANCE) {
+			if (pieceProvider.getPiece(origin.betweenDiagonal(target)) == null) {
+				return Error.EATING_EMPTY;
+			}
 		}
 		return null;
     }
