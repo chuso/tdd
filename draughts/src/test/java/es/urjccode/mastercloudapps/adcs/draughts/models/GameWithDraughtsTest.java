@@ -1,5 +1,7 @@
 package es.urjccode.mastercloudapps.adcs.draughts.models;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -32,20 +34,21 @@ public class GameWithDraughtsTest {
 
     @Test
     public void testGivenGameWhenWhitePawnAtLimitThenNewDraugts(){
+        Game game = new GameBuilder()
+            .row("        ")
+            .row("b       ")
+            .row("        ")
+            .row("  n     ")
+            .row("        ")
+            .row("        ")
+            .row("        ")
+            .row("        ")
+            .build();
         Coordinate origin = new Coordinate(1,0);
         Coordinate target = new Coordinate(0,1);
-        
-        when (turn.getColor()).thenReturn(Color.WHITE);
-        when(board.isEmpty(origin)).thenReturn(false);
-        when(board.getColor(origin)).thenReturn(Color.WHITE);
-        when(board.getPiece(origin)).thenReturn(piece);
-        when(piece.isCorrect(origin, target, board)).thenReturn(null);
-        when(board.remove(origin)).thenReturn(new Piece(Color.WHITE));
-        
-        when(board.getPiece(target)).thenReturn(new Piece(Color.WHITE));
         game.move(origin, target);
-        verify(board).remove(target);
-        verify(board).put(any(Coordinate.class), any(Draught.class));
+        assertNull(game.getPiece(origin));
+        assertEquals(game.getPiece(target), new Draught(Color.WHITE));
     }
 
     @Test
