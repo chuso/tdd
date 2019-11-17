@@ -145,7 +145,6 @@ public class GameWithDraughtsTest {
             .build();
         Coordinate origin = new Coordinate(0,1);
         Coordinate target = new Coordinate(1,0);
-        System.out.println(game);
         assertNull(game.isCorrect(origin, target));
         game.move(origin, target);
         assertNull(game.getPiece(origin));
@@ -167,7 +166,6 @@ public class GameWithDraughtsTest {
             .build();
         Coordinate origin = new Coordinate(7,4);
         Coordinate target = new Coordinate(6,3);
-        System.out.println(game);
         assertNull(game.isCorrect(origin, target));
         game.move(origin, target);
         assertNull(game.getPiece(origin));
@@ -188,7 +186,6 @@ public class GameWithDraughtsTest {
             .build();
         Coordinate origin = new Coordinate(0,1);
         Coordinate target = new Coordinate(3,4);
-        System.out.println(game);
         assertNull(game.isCorrect(origin, target));
         game.move(origin, target);
         assertNull(game.getPiece(origin));
@@ -209,7 +206,6 @@ public class GameWithDraughtsTest {
             .build();
         Coordinate origin = new Coordinate(0,1);
         Coordinate target = new Coordinate(2,3);
-        System.out.println(game);
         assertNull(game.isCorrect(origin, target));
         game.move(origin, target);
         assertNull(game.getPiece(origin));
