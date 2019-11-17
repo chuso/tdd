@@ -59,7 +59,20 @@ public class Coordinate {
     }
 
     List<Coordinate> between(Coordinate coordinate) {
+        assert isDiagonal(coordinate);
         List<Coordinate> coordinates = new ArrayList<Coordinate>();
+        int distance = this.diagonalDistance(coordinate);
+        int rowShift = 1;
+        if (coordinate.row - this.row < 0) {
+            rowShift = -1;
+        }
+        int columnShift = 1;
+        if (coordinate.column - this.column < 0) {
+            columnShift = -1;
+        }
+        for (int step = 1; step < distance; step++) {
+            coordinates.add(new Coordinate(this.row + step * rowShift, this.column + step * columnShift));
+        }
         return coordinates;
     }
 
