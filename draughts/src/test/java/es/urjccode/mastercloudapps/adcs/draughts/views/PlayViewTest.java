@@ -25,6 +25,9 @@ public class PlayViewTest {
     @Mock
     Console console;
 
+    @Mock
+    GameView gameView;
+
     @InjectMocks
     PlayView playView;
 

@@ -10,14 +10,18 @@ class PlayView extends SubView {
     private static final String MESSAGE = "Derrota!!! No puedes mover tus fichas!!!";
     private static final String FORMAT = "xx.xx";
 
+    private GameView gameView;
+
     PlayView() {
         super();
+        this.gameView = new GameView();
     }
 
     void interact(PlayController playController) {
         assert playController != null;
         Coordinate origin = null;
         Coordinate target = null;
+        gameView.write(playController);
         Error error;
         do {
             error = null;
@@ -40,6 +44,8 @@ class PlayView extends SubView {
             if (playController.isBlocked()){
                 this.console.writeln(PlayView.MESSAGE);
             }
+        } else {
+            console.writeln("Error!!! " + new ErrorView(error).getMessage());
         }
     }
 

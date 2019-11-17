@@ -13,7 +13,6 @@ class StartView extends SubView {
     void interact(StartController startController) {
         assert startController != null;
         this.console.writeln(StartView.TITTLE);
-        new GameView().write(startController);
         startController.start();
     }
 
