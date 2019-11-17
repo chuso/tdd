@@ -1,5 +1,8 @@
 package es.urjccode.mastercloudapps.adcs.draughts.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Coordinate {
 
     private int row;
@@ -53,6 +56,11 @@ public class Coordinate {
             columnShift = -1;
         }
         return new Coordinate(this.row + rowShift, this.column + columnShift);
+    }
+
+    List<Coordinate> between(Coordinate coordinate) {
+        List<Coordinate> coordinates = new ArrayList<Coordinate>();
+        return coordinates;
     }
 
     boolean isBlack() {
