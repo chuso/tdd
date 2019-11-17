@@ -6,4 +6,9 @@ class Draught extends Piece {
         super(color);
     }
 
+    Coordinate getEatenCoordinate(Coordinate origin, Coordinate target) {
+        // TODO
+        return null;
+    }
+
 }

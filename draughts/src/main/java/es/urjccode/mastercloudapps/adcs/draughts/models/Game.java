@@ -43,8 +43,9 @@ public class Game {
 
 	public void move(Coordinate origin, Coordinate target) {
 		assert this.isCorrect(origin, target) == null;
-		if (this.board.getPiece(origin) instanceof Pawn && origin.diagonalDistance(target) == 2) {
-			this.board.remove(origin.betweenDiagonal(target));
+		Coordinate eatenCoordinate = this.board.getPiece(origin).getEatenCoordinate(origin, target);
+		if (eatenCoordinate != null) {
+			this.board.remove(eatenCoordinate);
 		}
 		this.board.move(origin, target);
 		if (this.board.getPiece(target).isLimit(target)){
