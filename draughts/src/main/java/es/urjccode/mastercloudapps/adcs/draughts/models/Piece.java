@@ -18,9 +18,6 @@ abstract public class Piece implements Cloneable {
 			return Error.NOT_EMPTY_TARGET;
 		}
 		int distance = origin.diagonalDistance(target);
-		if (distance > Piece.MAX_DISTANCE) {
-			return Error.BAD_DISTANCE;
-		}
 		if (distance == Piece.MAX_DISTANCE) {
 			if (pieceProvider.getPiece(origin.betweenDiagonal(target)) == null) {
 				return Error.EATING_EMPTY;
