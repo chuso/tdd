@@ -83,4 +83,43 @@ public class GameWithDraughtsTest {
         verify(board).remove(target);
         verify(board).put(any(Coordinate.class), any(Draught.class));
     }
+
+    @Test
+    public void testGivenGameWhenWhitePawnNotAtLimitThenNoNewDraugts(){
+        Game game = new GameBuilder()
+            .row("        ")
+            .row("        ")
+            .row(" b      ")
+            .row("  n     ")
+            .row("        ")
+            .row("        ")
+            .row("        ")
+            .row("        ")
+            .build();
+        Coordinate origin = new Coordinate(2,1);
+        Coordinate target = new Coordinate(1,0);
+        game.move(origin, target);
+        assertNull(game.getPiece(origin));
+        assertEquals(game.getPiece(target), new Piece(Color.WHITE));
+    }
+
+    @Test
+    public void testGivenGameWhenBlackPawnNotAtLimitThenNoNewDraugts(){
+        Game game = new GameBuilder()
+            .row("        ")
+            .row("        ")
+            .row(" b      ")
+            .row("  n     ")
+            .row("        ")
+            .row("        ")
+            .row("        ")
+            .row("        ")
+            .changeTurn()
+            .build();
+        Coordinate origin = new Coordinate(3,2);
+        Coordinate target = new Coordinate(4,1);
+        game.move(origin, target);
+        assertNull(game.getPiece(origin));
+        assertEquals(game.getPiece(target), new Piece(Color.BLACK));
+    }
 }
