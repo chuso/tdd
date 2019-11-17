@@ -126,4 +126,47 @@ public class GameWithDraughtsTest {
         assertNull(game.getPiece(origin));
         assertEquals(game.getPiece(target), new Piece(Color.BLACK));
     }
+
+    @Test
+    public void testGivenGameWhenWhiteDraughNotAdvanceThenNoError(){
+        Game game = new GameBuilder()
+            .row(" B      ")
+            .row("        ")
+            .row("        ")
+            .row("        ")
+            .row("        ")
+            .row("        ")
+            .row("        ")
+            .row("    N   ")
+            .build();
+        Coordinate origin = new Coordinate(0,1);
+        Coordinate target = new Coordinate(1,0);
+        System.out.println(game);
+        assertNull(game.isCorrect(origin, target));
+        game.move(origin, target);
+        assertNull(game.getPiece(origin));
+        assertEquals(game.getPiece(target), new Draught(Color.WHITE));
+    }
+
+    @Test
+    public void testGivenGameWhenBlackDraughNotAdvanceThenNoError(){
+        Game game = new GameBuilder()
+            .row("        ")
+            .row("        ")
+            .row(" b      ")
+            .row("        ")
+            .row("        ")
+            .row("        ")
+            .row("        ")
+            .row("    N   ")
+            .changeTurn()
+            .build();
+        Coordinate origin = new Coordinate(7,4);
+        Coordinate target = new Coordinate(6,3);
+        System.out.println(game);
+        assertNull(game.isCorrect(origin, target));
+        game.move(origin, target);
+        assertNull(game.getPiece(origin));
+        assertEquals(game.getPiece(target), new Draught(Color.BLACK));
+    }
 }
