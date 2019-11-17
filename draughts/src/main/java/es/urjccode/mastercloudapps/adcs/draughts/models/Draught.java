@@ -1,5 +1,6 @@
 package es.urjccode.mastercloudapps.adcs.draughts.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Draught extends Piece {
@@ -18,22 +19,22 @@ class Draught extends Piece {
         if (error != null) {
             return error;
         }
-        if (numberOfEats(origin, target, pieceProvider) > 1) {
+        if (getOpponenCoordinatesInRange(origin, target, pieceProvider).size() > 1) {
             return Error.EATING_TOO_MUCH;
         }
         return null;
     }
 
-    private int numberOfEats(Coordinate origin, Coordinate target, PieceProvider pieceProvider) {
+    private List<Coordinate> getOpponenCoordinatesInRange(Coordinate origin, Coordinate target, PieceProvider pieceProvider) {
         List<Coordinate> coordinatesBetween = origin.between(target);
-        int differentColorPieces = 0;
+        List<Coordinate> opponenCoordinates = new ArrayList<Coordinate>();
         for (Coordinate coordinate : coordinatesBetween) {
             Piece piece = pieceProvider.getPiece(coordinate);
             if (piece != null && piece.getColor() != this.getColor()) {
-                differentColorPieces++;
+                opponenCoordinates.add(coordinate);
             }
         }
-        return differentColorPieces;
+        return opponenCoordinates;
     }
 
 }
