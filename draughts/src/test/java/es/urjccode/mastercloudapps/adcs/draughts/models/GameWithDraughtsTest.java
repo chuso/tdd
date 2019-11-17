@@ -211,4 +211,21 @@ public class GameWithDraughtsTest {
         assertNull(game.getPiece(origin));
         assertEquals(game.getPiece(target), new Draught(Color.WHITE));
     }
+
+    @Test
+    public void testGivenGameWhenDraughTryToEatMoreThanOnePiecesThenEatingTooMuchError(){
+        Game game = new GameBuilder()
+            .row(" B      ")
+            .row("  n     ")
+            .row("   n    ")
+            .row("        ")
+            .row("        ")
+            .row("        ")
+            .row("        ")
+            .row("    N   ")
+            .build();
+        Coordinate origin = new Coordinate(0,1);
+        Coordinate target = new Coordinate(3,4);
+        assertEquals(game.isCorrect(origin, target), Error.EATING_TOO_MUCH);
+    }
 }
