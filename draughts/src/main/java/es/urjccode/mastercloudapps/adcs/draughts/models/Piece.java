@@ -1,6 +1,6 @@
 package es.urjccode.mastercloudapps.adcs.draughts.models;
 
-public class Piece {
+public class Piece implements Cloneable {
 
 	private Color color;
 	private static final int MAX_DISTANCE = 2;
@@ -49,6 +49,11 @@ public class Piece {
 
 	Color getColor() {
 		return this.color;
+	}
+
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		return super.clone();
 	}
 
 }

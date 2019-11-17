@@ -5,6 +5,11 @@ public class Game {
 	private Board board;
 	private Turn turn;
 
+	public Game(Board board, Turn turn) {
+		this.board = board;
+		this.turn = turn;
+	}
+
 	public Game() {
 		this.turn = new Turn();
 		this.board = new Board();
