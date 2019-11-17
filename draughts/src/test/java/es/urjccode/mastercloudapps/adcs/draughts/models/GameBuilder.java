@@ -18,7 +18,7 @@ class GameBuilder {
         this.piecePrototype.put('b', new Piece(Color.WHITE));
         this.piecePrototype.put('B', new Draught(Color.WHITE));
         this.piecePrototype.put('n', new Piece(Color.BLACK));
-        this.piecePrototype.put('N', new Draught(Color.WHITE));
+        this.piecePrototype.put('N', new Draught(Color.BLACK));
     }
 
     public GameBuilder row(String string) {
