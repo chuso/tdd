@@ -228,4 +228,25 @@ public class GameWithDraughtsTest {
         Coordinate target = new Coordinate(3,4);
         assertEquals(game.isCorrect(origin, target), Error.EATING_TOO_MUCH);
     }
+
+    @Test
+    public void testGivenGameWhenDraughtTryToEatOnleOnePieceThenNoError(){
+        Game game = new GameBuilder()
+            .row(" B      ")
+            .row("        ")
+            .row("        ")
+            .row("    n   ")
+            .row("        ")
+            .row("        ")
+            .row("        ")
+            .row("    N   ")
+            .build();
+        Coordinate origin = new Coordinate(0,1);
+        Coordinate target = new Coordinate(4,5);
+        assertNull(game.isCorrect(origin, target));
+        game.move(origin, target);
+        assertNull(game.getPiece(origin));
+        assertNull(game.getPiece(new Coordinate(3,4)));
+        assertEquals(game.getPiece(target), new Draught(Color.WHITE));
+    }
 }
