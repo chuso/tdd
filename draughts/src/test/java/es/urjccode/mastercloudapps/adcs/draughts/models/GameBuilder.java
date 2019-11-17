@@ -15,9 +15,9 @@ class GameBuilder {
         this.strings = new ArrayList<String>();
         this.turn = new Turn();
         this.piecePrototype = new HashMap<Character, Piece>();
-        this.piecePrototype.put('b', new Piece(Color.WHITE));
+        this.piecePrototype.put('b', new Pawn(Color.WHITE));
         this.piecePrototype.put('B', new Draught(Color.WHITE));
-        this.piecePrototype.put('n', new Piece(Color.BLACK));
+        this.piecePrototype.put('n', new Pawn(Color.BLACK));
         this.piecePrototype.put('N', new Draught(Color.BLACK));
     }
 

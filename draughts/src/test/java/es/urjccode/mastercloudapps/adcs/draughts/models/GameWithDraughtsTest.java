@@ -20,6 +20,9 @@ public class GameWithDraughtsTest {
 
     @Mock
     Piece piece;
+
+    @Mock
+    Pawn pawn;
     
     @Mock
     Board board;
@@ -58,10 +61,10 @@ public class GameWithDraughtsTest {
         when (turn.getColor()).thenReturn(Color.WHITE);
         when(board.isEmpty(origin)).thenReturn(false);
         when(board.getColor(origin)).thenReturn(Color.WHITE);
-        when(board.getPiece(origin)).thenReturn(piece);
+        when(board.getPiece(origin)).thenReturn(pawn);
         when(piece.isCorrect(origin, target, board)).thenReturn(null);
-        when(board.remove(origin)).thenReturn(new Piece(Color.WHITE));
-        when(board.getPiece(target)).thenReturn(new Piece(Color.WHITE));
+        when(board.remove(origin)).thenReturn(new Pawn(Color.WHITE));
+        when(board.getPiece(target)).thenReturn(new Pawn(Color.WHITE));
         game.move(origin, target);
         verify(board).remove(origin.betweenDiagonal(target));
         verify(board).remove(target);
@@ -104,7 +107,7 @@ public class GameWithDraughtsTest {
         Coordinate target = new Coordinate(1,0);
         game.move(origin, target);
         assertNull(game.getPiece(origin));
-        assertEquals(game.getPiece(target), new Piece(Color.WHITE));
+        assertEquals(game.getPiece(target), new Pawn(Color.WHITE));
     }
 
     @Test
@@ -124,7 +127,7 @@ public class GameWithDraughtsTest {
         Coordinate target = new Coordinate(4,1);
         game.move(origin, target);
         assertNull(game.getPiece(origin));
-        assertEquals(game.getPiece(target), new Piece(Color.BLACK));
+        assertEquals(game.getPiece(target), new Pawn(Color.BLACK));
     }
 
     @Test
