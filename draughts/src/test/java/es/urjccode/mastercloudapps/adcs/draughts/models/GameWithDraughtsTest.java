@@ -70,18 +70,22 @@ public class GameWithDraughtsTest {
 
     @Test
     public void testGivenGameWhenBlackPawnAtLimitThenNewDraugts(){
+        Game game = new GameBuilder()
+            .row("        ")
+            .row("b       ")
+            .row("        ")
+            .row("        ")
+            .row("        ")
+            .row("        ")
+            .row("   n    ")
+            .row("        ")
+            .changeTurn()
+            .build();
         Coordinate origin = new Coordinate(6,3);
         Coordinate target = new Coordinate(7,2);
-        when (turn.getColor()).thenReturn(Color.BLACK);
-        when(board.isEmpty(origin)).thenReturn(false);
-        when(board.getColor(origin)).thenReturn(Color.BLACK);
-        when(board.getPiece(origin)).thenReturn(piece);
-        when(piece.isCorrect(origin, target, board)).thenReturn(null);
-        when(board.remove(origin)).thenReturn(new Piece(Color.BLACK));
-        when(board.getPiece(target)).thenReturn(new Piece(Color.BLACK));
         game.move(origin, target);
-        verify(board).remove(target);
-        verify(board).put(any(Coordinate.class), any(Draught.class));
+        assertNull(game.getPiece(origin));
+        assertEquals(game.getPiece(target), new Draught(Color.BLACK));
     }
 
     @Test
