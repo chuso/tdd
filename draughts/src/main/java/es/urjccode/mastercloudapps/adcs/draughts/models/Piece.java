@@ -17,8 +17,9 @@ public class Piece implements Cloneable {
 		if (!pieceProvider.isEmpty(target)) {
 			return Error.NOT_EMPTY_TARGET;
 		}
-		if (!this.isAdvanced(origin, target)) {
-			return Error.NOT_ADVANCED;
+		Error specificPieceError = this.isCorrectSpecificPiece(origin, target);
+		if (specificPieceError != null) {
+			return specificPieceError;
 		}
 		int distance = origin.diagonalDistance(target);
 		if (distance > Piece.MAX_DISTANCE) {
@@ -49,6 +50,13 @@ public class Piece implements Cloneable {
 
 	Color getColor() {
 		return this.color;
+	}
+
+	protected Error isCorrectSpecificPiece(Coordinate origin, Coordinate target) {
+		if (!this.isAdvanced(origin, target)) {
+			return Error.NOT_ADVANCED;
+		}
+		return null;
 	}
 
 	@Override
