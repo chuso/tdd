@@ -8,7 +8,7 @@ class Pawn extends Piece {
         super(color);
     }
 
-    Coordinate getEatenCoordinate(Coordinate origin, Coordinate target) {
+    Coordinate getEatenCoordinate(Coordinate origin, Coordinate target, PieceProvider pieceProvider) {
         if (origin.diagonalDistance(target) != Pawn.MAX_DISTANCE) {
             return null;
         }

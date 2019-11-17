@@ -63,7 +63,7 @@ public class GameWithDraughtsTest {
         when(board.getColor(origin)).thenReturn(Color.WHITE);
         when(board.getPiece(origin)).thenReturn(pawn);
         when(piece.isCorrect(origin, target, board)).thenReturn(null);
-        when(pawn.getEatenCoordinate(origin, target)).thenReturn(new Coordinate(1, 2));
+        when(pawn.getEatenCoordinate(origin, target, board)).thenReturn(new Coordinate(1, 2));
         when(board.remove(origin)).thenReturn(new Pawn(Color.WHITE));
         when(board.getPiece(target)).thenReturn(new Pawn(Color.WHITE));
         game.move(origin, target);

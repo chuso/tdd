@@ -9,9 +9,13 @@ class Draught extends Piece {
         super(color);
     }
 
-    Coordinate getEatenCoordinate(Coordinate origin, Coordinate target) {
-        // TODO
-        return null;
+    Coordinate getEatenCoordinate(Coordinate origin, Coordinate target, PieceProvider pieceProvider) {
+        List<Coordinate> opponenCoordinates = this.getOpponenCoordinatesInRange(origin, target, pieceProvider);
+        assert opponenCoordinates.size() <= 1;
+        if (opponenCoordinates.size() == 0) {
+            return null;
+        }
+        return opponenCoordinates.get(0);
     }
 
     Error isCorrect(Coordinate origin, Coordinate target, PieceProvider pieceProvider) {

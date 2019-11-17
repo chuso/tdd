@@ -43,7 +43,7 @@ public class Game {
 
 	public void move(Coordinate origin, Coordinate target) {
 		assert this.isCorrect(origin, target) == null;
-		Coordinate eatenCoordinate = this.board.getPiece(origin).getEatenCoordinate(origin, target);
+		Coordinate eatenCoordinate = this.board.getPiece(origin).getEatenCoordinate(origin, target, this.board);
 		if (eatenCoordinate != null) {
 			this.board.remove(eatenCoordinate);
 		}

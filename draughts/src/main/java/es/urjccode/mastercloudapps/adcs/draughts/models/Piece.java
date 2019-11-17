@@ -24,7 +24,7 @@ abstract public class Piece implements Cloneable {
 		coordinate.getRow()== 7 && this.getColor() == Color.BLACK;
 	}
 
-	abstract Coordinate getEatenCoordinate(Coordinate origin, Coordinate target);
+	abstract Coordinate getEatenCoordinate(Coordinate origin, Coordinate target, PieceProvider pieceProvider);
 
 	Color getColor() {
 		return this.color;
